@@ -2,7 +2,7 @@ import { PUT_DATA } from '../actions/actionTypes';
 import produce from 'immer';
 
 const initialState = {
-  data: {},
+  todo: [],
 };
 
 // export const putData = produce((draft, action) => {
@@ -13,10 +13,10 @@ const initialState = {
 
 export const putData = (state = initialState, action) => {
   if (action.type === PUT_DATA) {
-    return Object.assign({}, state, {
-      // <- NB the {}!
-      data: action.payload,
-    });
+    return {
+      ...state,
+      todo: [].concat(action.payload),
+    };
   }
   return state;
 };

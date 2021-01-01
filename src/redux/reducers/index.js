@@ -1,3 +1,3 @@
 import { combineReducers } from 'redux';
 import { putData } from './data';
-export const rootReducer = combineReducers({ putData });
+export const rootReducer = combineReducers({ data: putData });
