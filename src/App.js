@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { loadData } from './redux/actions';
 
 function App() {
+  console.log('render App');
+  const data = useSelector((state) => state.data);
+  const dispatch = useDispatch();
+
+  const clickHandler = () => {
+    dispatch(loadData());
+  };
+
+  // React.useEffect(() => {
+  //   console.log('data:', data);
+  // }, [data]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <button onClick={clickHandler}>Click me</button>
+      {data && <p>{data.id}</p>}
+    </>
   );
 }
 
