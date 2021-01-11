@@ -1,4 +1,4 @@
-import { PUT_DATA, LOAD_DATA } from './actionTypes';
+import { LOAD_DATA, PUT_DATA } from './types';
 
 export const putData = (data) => ({
   type: PUT_DATA,

@@ -1,12 +1,10 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { loadData } from './redux/actions';
+import { loadData } from './redux/actions/data';
+import { useDispatch, useSelector } from 'react-redux';
 
 function App() {
-  console.log('render App');
-  const data = useSelector((state) => state.data.todo);
   const dispatch = useDispatch();
-
+  const data = useSelector((state) => state.putData.data);
   const clickHandler = () => {
     dispatch(loadData());
   };
@@ -14,13 +12,7 @@ function App() {
   return (
     <>
       <button onClick={clickHandler}>Click me</button>
-      {data.length
-        ? data.map((obj) => (
-            <p key={obj.id}>
-              {obj.id}: {obj.username}
-            </p>
-          ))
-        : 'No data yet :('}
+      {data ? data.map((obj) => <p key={obj.id}>{obj.name}</p>) : ''}
     </>
   );
 }
